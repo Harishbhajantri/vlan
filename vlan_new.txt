@@ -1,0 +1,30 @@
+Switch>en
+Switch#sh vlan 
+Switch#vlan database 
+Switch(vlan)#vlan 2 name hr
+Switch(vlan)#vlan 3 name sales
+Switch(vlan)#vlan 4 name mgmt
+Switch(vlan)#exit
+Switch#sh vlan 
+Switch#conf t
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport access vlan 2
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/2
+Switch(config-if)#switchport access vlan 2
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/3
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/4
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/5
+Switch(config-if)#switchport access vlan 4
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/6
+Switch(config-if)#switchport access vlan 4
+Switch(config-if)#exit
+Switch(config)#^Z
+Switch#sh vl
+Switch#sh vlan 
