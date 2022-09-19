@@ -1,0 +1,26 @@
+Switch>en
+Switch#
+Switch#conf t
+Switch(config)#interface fastEthernet 0/24
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#
+Switch(config-if)#exit
+Switch(config)#vlan 2
+Switch(config-vlan)#name hr
+Switch(config-vlan)#exit
+Switch(config)#vlan 3
+Switch(config-vlan)#name sales
+Switch(config-vlan)#exit
+Switch(config)#vlan 4
+Switch(config-vlan)#name mgmt
+Switch(config-vlan)#exit
+Switch(config)#^Z
+Switch#
+Switch#sh vlan 
+Switch#
+Switch#vlan database 
+Switch(vlan)#vtp server 
+Switch(vlan)#vtp domain abc
+Switch(vlan)#vtp password 123
+Switch(vlan)#exit
+Switch#sh vtp status 

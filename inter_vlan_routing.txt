@@ -1,0 +1,40 @@
+S1
+Switch>en
+Switch#vlan database 
+Switch(vlan)#vlan 2 name jet
+Switch(vlan)#vlan 3 name king
+Switch(vlan)#exit
+Switch#sh vl
+Switch#conf t
+Switch(config)#interface fastEthernet 1/1
+Switch(config-if)#switchport access vlan 2
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 2/1
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#exit
+
+R1
+Router>en
+Router#
+Router#conf t
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#no ip address 
+Router(config-if)#no shutdown 
+Router(config-if)#exit
+Router(config)#interface fastEthernet 0/0.1
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#ip address 10.0.0.1 255.0.0.0
+Router(config-subif)#no shutdown 
+Router(config-subif)#exit
+Router(config)#interface fastEthernet 0/0.2
+Router(config-subif)#encapsulation dot1Q 3
+Router(config-subif)#ip address 20.0.0.1 255.0.0.0
+Router(config-subif)#no shutdown 
+Router(config-subif)#exit
+Router(config)#router rip 
+Router(config-router)#version 2
+Router(config-router)#network 10.0.0.0
+Router(config-router)#network 20.0.0.0
